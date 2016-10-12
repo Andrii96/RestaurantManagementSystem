@@ -93,9 +93,17 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    _groupItemsViewModel.OrderViewModel.OrderedItem = SelectedItem;
-                    _groupItemsViewModel.OrderViewModel.Amount = int.Parse(Amount);
-                    _groupItemsViewModel.OrderViewModel.SubmitOrderDetail();
+                    if(SelectedItem == null)
+                    {
+                        System.Windows.MessageBox.Show("Please, select any item", "Error");
+
+                    }else
+                    {
+                        _groupItemsViewModel.OrderViewModel.OrderedItem = SelectedItem;
+                        _groupItemsViewModel.OrderViewModel.Amount = int.Parse(Amount);
+                        _groupItemsViewModel.OrderViewModel.SubmitOrderDetail();
+                    }
+                   
                 });
             }
         }

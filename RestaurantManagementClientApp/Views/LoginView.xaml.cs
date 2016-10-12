@@ -1,0 +1,42 @@
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using DataAccessLayer.Models;
+
+namespace RestaurantManagementClientApp.Views
+{
+    /// <summary>
+    /// Interaction logic for LoginView.xaml
+    /// </summary>
+    public partial class LoginView : Window
+    {
+        public LoginView()
+        {
+            InitializeComponent();
+            Messenger.Default.Register<Casher>(this, NotificationMessageReceived);
+        }
+
+        private void NotificationMessageReceived(Casher casher)
+        {          
+                MainView mainView = new MainView(casher);
+                mainView.Show();
+                this.Close();           
+        }
+
+        private void txtbLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+    }
+}

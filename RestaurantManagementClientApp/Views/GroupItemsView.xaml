@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="RestaurantManagementClientApp.Views.GroupItemsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:RestaurantManagementClientApp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="448" d:DesignWidth="350">
+    <Grid>
+        <Button x:Name="button_Copy" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="130,24,0,0" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image x:Name="ExitIcon" HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/salad.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lblSalad" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Salad" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblSalad}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+            
+
+        </Button>
+        <Button x:Name="button_Copy1" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="231,24,0,0" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/meat.png" Margin="2,-14,0,22" Width="64"/>
+                <Label x:Name="lblMeat" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Meat" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblMeat}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+            </Grid>
+        </Button>
+        <Button x:Name="button_Copy2" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="29,125,0,0" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/soup.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lblSoup" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Soup" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblSoup}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+        </Button>
+        <Button x:Name="button_Copy3" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="130,125,0,0" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/pizza.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lblPizza" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Pizza" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblPizza}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+        </Button>
+        <Button x:Name="button_Copy4" Style="{StaticResource toolBarButton}" HorizontalAlignment="Left" Margin="231,125,0,0" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/wine.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lblAlcohol" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Alcohol" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblAlcohol}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+        </Button>
+        <Button x:Name="button_Copy5" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="29,226,0,-8" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/drinks.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lblDrinks" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Drinks" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblDrinks}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+        </Button>
+        <Button x:Name="button_Copy7" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="130,226,0,-8" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/fruits.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lblFruits" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Fruits" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblFruits}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+        </Button>
+        <Button x:Name="button_Copy6"  Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="29,24,0,0" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/snack.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lblSnacks" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Snacks" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lblSnacks}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+        </Button>
+        <Button x:Name="button_Copy8" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="231,226,0,-8" VerticalAlignment="Top" Width="96" Height="96">
+            <Grid>
+                <Image  HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/desert.png" Margin="0,-14,0,24" Width="64"/>
+                <Label x:Name="lbDesert" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Content="Desert" HorizontalAlignment="Right" Height="37" Margin="0,43,-6,-4" VerticalAlignment="Top" Width="70" FontSize="18" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding MenuGroupClick}" CommandParameter="{Binding ElementName=lbDesert}" ></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+        </Button>
+
+    </Grid>
+</UserControl>

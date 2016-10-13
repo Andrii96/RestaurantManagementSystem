@@ -1,11 +1,14 @@
 ﻿using DataAccessLayer.DataBaseAccess;
 using DataAccessLayer.Models;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace RestaurantManagementClientApp.ViewModel
 {
@@ -44,6 +47,7 @@ namespace RestaurantManagementClientApp.ViewModel
                 RaisePropertyChanged("CurrentViewModel");
             }
         }
+
         public string CasherInfo
         {
             get { return _casherInfo; }
@@ -54,10 +58,54 @@ namespace RestaurantManagementClientApp.ViewModel
                 RaisePropertyChanged("CasherInfo");
             }
         }
+
+        public ICommand OrderSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    CurrentViewModel = new OrderViewModel(this);
+                });
+            }
+        }
+
+        public ICommand MenuSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    CurrentViewModel = new MenuViewModel();
+                });
+            }
+        }
+
+        public ICommand ReportSelected
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    CurrentViewModel = new ReportViewModel();
+                });
+            }
+        }
+
+        public ICommand Close
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    Messenger.Default.Send<NotificationMessage>(new NotificationMessage("Close"));
+                });
+            }
+        }
         #endregion
 
         #region Methods
         #endregion
-  
+
     }
 }

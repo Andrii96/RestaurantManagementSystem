@@ -1,5 +1,4 @@
-﻿using DataAccessLayer.Models;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,35 +11,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RestaurantManagementClientApp.Views
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for MenuView.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class MenuView : UserControl
     {
-        public MainView(Casher casher)
+        public MenuView()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.MainViewModel(casher);
             Messenger.Default.Register<NotificationMessage>(this, MessageNotification);
-            
         }
 
         private void MessageNotification(NotificationMessage obj)
         {
-            if(obj.Notification == "Close")
+            if (obj.Notification == "Add")
             {
-                var result = MessageBox.Show("Do you want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                if(MessageBoxResult.Yes == result)
-                {
-                    App.Current.Shutdown();
-                }
-                
+                new NewMenuItem().Show();
             }
+        }
+
+        private void comboBox_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

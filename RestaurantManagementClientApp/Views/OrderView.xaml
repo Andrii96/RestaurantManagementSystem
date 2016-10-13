@@ -29,10 +29,10 @@
                 <DataGridTextColumn Width="119" Header="Amount" Binding="{Binding Amount}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Content="Order №" HorizontalAlignment="Left" Height="40" Margin="174,16,0,0" VerticalAlignment="Top" Width="126" FontFamily="Segoe UI Black" FontSize="20"/>
-        <Label x:Name="label_Copy" Content="{Binding OrderNumber}" HorizontalAlignment="Left" Height="34" Margin="271,14,0,0" VerticalAlignment="Top" Width="79" FontFamily="Segoe UI Black" FontSize="24" FontWeight="Bold"/>
-        <Label x:Name="label_Copy1" Content="Table:" HorizontalAlignment="Left" Height="34" Margin="430,16,0,0" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.865,0.305" FontFamily="Segoe UI Black" FontWeight="Bold" FontSize="22"/>
-        <Label x:Name="label_Copy2" Content="{Binding TableNumber}" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="53" Margin="506,16,0,0" FontFamily="Segoe UI Black" FontSize="22"/>
+        <Label x:Name="label" Content="Order №" HorizontalAlignment="Left" Height="46" Margin="174,10,0,0" VerticalAlignment="Top" Width="126" FontFamily="Segoe UI Black" FontSize="20"/>
+        <Label x:Name="label_Copy" Content="{Binding OrderNumber}" HorizontalAlignment="Left" Height="38" Margin="271,10,0,0" VerticalAlignment="Top" Width="79" FontFamily="Segoe UI Black" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.5,0.132"/>
+        <Label x:Name="label_Copy1" Content="Table:" HorizontalAlignment="Left" Height="40" Margin="430,10,0,0" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.865,0.305" FontFamily="Segoe UI Black" FontWeight="Bold" FontSize="22"/>
+        <Label x:Name="label_Copy2" Content="{Binding TableNumber}" HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="53" Margin="506,10,0,0" FontFamily="Segoe UI Black" FontSize="22"/>
         <Grid HorizontalAlignment="Left" Height="218" Margin="15,94,0,0" VerticalAlignment="Top" Width="159">
             <Button x:Name="btn2" Content="2"  Command="{Binding TableSelected}" CommandParameter="{Binding ElementName=btn2}"  Background="#FF5FB424" HorizontalAlignment="Left" Margin="49,0,0,162" VerticalAlignment="Bottom" Width="49" Height="43" BorderBrush="#FF060606"/>
             <Button x:Name="btn3" Content="3"  Command="{Binding TableSelected}" CommandParameter="{Binding ElementName=btn3}"  Background="#FF5FB424" HorizontalAlignment="Left" Margin="98,0,0,162" VerticalAlignment="Bottom" Width="49" Height="43 " BorderBrush="#FF060606"/>

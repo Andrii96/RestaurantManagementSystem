@@ -7,13 +7,19 @@
         xmlns:vm="clr-namespace:RestaurantManagementClientApp.ViewModel"
         mc:Ignorable="d"
         Title="{Binding CasherInfo}" Height="600" Width="900"
-        Icon="/RestaurantManagementClientApp;component/Resources/icon.png">
+        Icon="/RestaurantManagementClientApp;component/Resources/AppIcon.png">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:OrderViewModel}">
             <local:OrderView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+            <local:MenuView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ReportViewModel}">
+            <local:ReportView/>
+        </DataTemplate>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -21,37 +27,37 @@
                 <GradientStop Color="#FF6E6C3D" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button x:Name="btnOrder" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="16,15,0,0" VerticalAlignment="Top"  >
+        <Button x:Name="btnOrder" Command="{Binding OrderSelected}" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="16,15,0,0" VerticalAlignment="Top"  >
             <Grid>
                 <Image x:Name="Icon" HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/order.png" Margin="-12,0,0,0"/>
                 <Label Margin="18,2,-6,4"  Content="Order" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI Black"/>
             </Grid>
         </Button>
-        <Button x:Name="btnMenu"   Style="{StaticResource toolBarButton}" HorizontalAlignment="Left" Margin="126,15,0,0" VerticalAlignment="Top" >
+        <Button x:Name="btnMenu" Command="{Binding MenuSelected}"   Style="{StaticResource toolBarButton}" HorizontalAlignment="Left" Margin="126,15,0,0" VerticalAlignment="Top" >
             <Grid>
                 <Image x:Name="MenuIcon" HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/menu.png" Margin="-12,0,0,0"/>
                 <Label Margin="14,2,-2,4"  Content="Menu" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI Black"/>
             </Grid>
 
         </Button>
-        <Button x:Name="btnReport"  HorizontalAlignment="Left"  Style="{StaticResource toolBarButton}" Margin="236,15,0,0" VerticalAlignment="Top" >
+        <Button x:Name="btnReport" Command="{Binding ReportSelected}"  HorizontalAlignment="Left"  Style="{StaticResource toolBarButton}" Margin="236,15,0,0" VerticalAlignment="Top" >
             <Grid>
                 <Image x:Name="ReportIcon" HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/report.png" Margin="-12,0,0,0" Width="26"/>
                 <Label Margin="14,2,0,4"  Content="Report" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI Black"/>
             </Grid>
         </Button>
-        <Button x:Name="btnExit" HorizontalAlignment="Left"  Style="{StaticResource toolBarButton}" Margin="346,15,0,0" VerticalAlignment="Top">
+        <Button x:Name="btnExit" Command="{Binding Close}" HorizontalAlignment="Left"  Style="{StaticResource toolBarButton}" Margin="346,15,0,0" VerticalAlignment="Top">
             <Grid>
                 <Image x:Name="ExitIcon" HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/exit.png" Margin="-12,0,0,0"/>
                 <Label Margin="18,2,-6,4"  Content="Exit" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI Black"/>
             </Grid>
         </Button>
         <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="9" Margin="0,87,0,0" VerticalAlignment="Top" Width="892" Background="#FF0A0A0A"/>
-        <Label x:Name="label" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Content="GoodFood" HorizontalAlignment="Right" Height="72" Margin="0,15,0,0" VerticalAlignment="Top" Width="308" FontSize="72" FontWeight="Bold" FontFamily="Monotype Corsiva"/>
+        <Label x:Name="label" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" Content="GoodFood" HorizontalAlignment="Right" Height="96" VerticalAlignment="Top" Width="304" FontSize="72" FontWeight="Bold" FontFamily="Monotype Corsiva" RenderTransformOrigin="0.486,0.329"/>
 
         <DockPanel RenderTransformOrigin="0.88,0.574" Margin="0,110,0,0"  >
             <ContentControl Content="{Binding CurrentViewModel}" Width="888"/>
         </DockPanel>
     </Grid>
-    
+
 </Window>

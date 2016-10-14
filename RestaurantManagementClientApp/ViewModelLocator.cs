@@ -47,6 +47,8 @@ namespace RestaurantManagementClientApp.ViewModel
             SimpleIoc.Default.Register<LoginViewModel>();
             
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<MenuViewModel>();
+            
         }
 
         public LoginViewModel LoginViewModel

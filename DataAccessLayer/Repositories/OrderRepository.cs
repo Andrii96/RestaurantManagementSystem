@@ -12,8 +12,21 @@ namespace DataAccessLayer.DataBaseAccess
     {
         public OrderRepository(string connectionString) : base(connectionString) { }
 
+        public List<Order> GetAllOrders()
+        {
+            Connection.Open();
+            List<Order> itemsList = new List<Order>();
+            foreach (var item in GetAllRecords("sp_GetAllOrders"))
+            {
+                itemsList.Add((Order)item);
+            }
+            Connection.Close();
+            return itemsList;
+        }
+
         public void InsertOrderRecord(Order order)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
 
             parametrs["@id"] = order.Id;
@@ -22,20 +35,24 @@ namespace DataAccessLayer.DataBaseAccess
             parametrs["date"] = order.Date;
 
             Execute("sp_InsertOrderRecord", parametrs);
+            Connection.Close();
         }
 
         public void DeleteOrderRecord(Order order)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
 
             parametrs["@id"] = order.Id;
 
             Execute("sp_DeleteOrderRecord", parametrs);
+            Connection.Close();
 
         }
 
         public List<Order> GetOrdersByDate(DateTime date)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@date"] = date;
             var list = GetAllRecords("sp_GetOrdersByDate", parametrs);
@@ -44,11 +61,13 @@ namespace DataAccessLayer.DataBaseAccess
             {
                 orders.Add((Order)item);
             }
+            Connection.Close();
             return orders;
         }
 
         public List<Order> GetOrdersByTableNumber(int number)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@table_num"] = number;
 
@@ -58,12 +77,14 @@ namespace DataAccessLayer.DataBaseAccess
             {
                 orders.Add((Order)item);
             }
+            Connection.Close();
             return orders;
         }
 
         public List<Order> GetOrdersByMonth(int monthNumber,int year)
         {
-            if(monthNumber < 1 || monthNumber > 12)
+            Connection.Open();
+            if (monthNumber < 1 || monthNumber > 12)
             {
                 throw new ArgumentException("invalid month number");
             }
@@ -78,6 +99,7 @@ namespace DataAccessLayer.DataBaseAccess
             {
                 orders.Add((Order)item);
             }
+            Connection.Close();
             return orders;
         }
 
@@ -93,7 +115,7 @@ namespace DataAccessLayer.DataBaseAccess
 
             order.TableNumber = (int)record["table_number"];
             order.Date = (DateTime)record["order_date"];
-
+           
             return order;
         }
     }

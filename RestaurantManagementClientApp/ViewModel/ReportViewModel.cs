@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Office.Interop.Excel;
 using GalaSoft.MvvmLight.Messaging;
+using System.Windows.Controls;
 
 namespace RestaurantManagementClientApp.ViewModel
 {
@@ -89,8 +90,8 @@ namespace RestaurantManagementClientApp.ViewModel
                 {
                     if (SelectedBill != null)
                     {
-                        Messenger.Default.Send<NotificationMessage<ReportViewModel>>(new NotificationMessage<ReportViewModel>(this, "Detail"));
-
+                        new Views.OrderInfoView(this).Show();
+                        SelectedBill = null;
                     }
                 });
             }
@@ -104,9 +105,11 @@ namespace RestaurantManagementClientApp.ViewModel
                 {
                     if(SelectedDate != new DateTime())
                     {
+                        
                         var orders = _orderRepository.GetOrdersByDate(SelectedDate);
                         BillList = GetBillsFromOrders(orders);
                         ReportInfo = SelectedDate.Date.ToShortDateString();
+                        //SelectedDate = new DateTime();
                     }
                     
                 });
@@ -123,7 +126,7 @@ namespace RestaurantManagementClientApp.ViewModel
                     var orders = _orderRepository.GetOrdersByMonth(SelectedDate.Month, SelectedDate.Year);
                     
                     BillList = GetBillsFromOrders(orders);
-                    SelectedDate = new DateTime();
+                    //SelectedDate = new DateTime();
 
                 });
             }
@@ -189,9 +192,17 @@ namespace RestaurantManagementClientApp.ViewModel
             double total = 0;
             foreach (var item in orders)
             {
-                var bill = _billRepository.GetBillByOrder(item);
-                bills.Add(bill);
-                total += bill.Total;
+                try
+                {
+                    var bill = _billRepository.GetBillByOrder(item);
+                    total += bill.Total;
+                    bills.Add(bill);
+                }
+                catch(NullReferenceException e)
+                {
+                    break;
+                }
+                
             }
             Total = total;
             return bills;

@@ -30,7 +30,6 @@ namespace DataAccessLayer
             {
                 throw new NullReferenceException("Connection is null value.");
             }
-            connection.Open();
             return connection;
         }
             

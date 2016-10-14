@@ -32,7 +32,7 @@ namespace DataAccessLayer
 
         #region Methods
 
-        public IList<EntityBase> GetAllRecords(string sp_name, Dictionary<string,object> parametrs=null)
+        protected IList<EntityBase> GetAllRecords(string sp_name, Dictionary<string,object> parametrs=null)
         {
             using (var command = new SqlCommand(sp_name, Connection))
             {

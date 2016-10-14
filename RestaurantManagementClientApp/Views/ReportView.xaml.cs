@@ -23,18 +23,10 @@ namespace RestaurantManagementClientApp.Views
     public partial class ReportView : UserControl
     {
         public ReportView()
-        {
-            InitializeComponent();
-            DataContext = new ViewModel.ReportViewModel();
-            Messenger.Default.Register<NotificationMessage<ViewModel.ReportViewModel>>(this, MessageNotification);
+        {           
+                InitializeComponent();
         }
 
-        private void MessageNotification(NotificationMessage<ReportViewModel> obj)
-        {
-            if(obj.Notification == "Detail")
-            {
-                new OrderInfoView(obj.Content).Show();
-            }
-        }
+     
     }
 }

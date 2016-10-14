@@ -17,7 +17,8 @@ namespace RestaurantManagementClientApp.ViewModel
         #region Fields
         private Casher _casher;
         private string _casherInfo;
-        private ViewModelBase _viewModel;
+        private  ViewModelBase _viewModel;
+        private List<ViewModelBase> _viewModels;
         #endregion
 
         #region Constructor
@@ -25,7 +26,8 @@ namespace RestaurantManagementClientApp.ViewModel
         {
             _casher = casher;
             CasherInfo = $"{_casher.Name} {casher.Surname}";
-            CurrentViewModel = new OrderViewModel(this);
+            _viewModels = new List<ViewModelBase>() { new OrderViewModel(this), new MenuViewModel(), new ReportViewModel() };
+            CurrentViewModel = _viewModels[0];
         }
         #endregion
 
@@ -35,7 +37,7 @@ namespace RestaurantManagementClientApp.ViewModel
         {
             get { return _casher; }
         }
-        public ViewModelBase CurrentViewModel
+        public  ViewModelBase CurrentViewModel
         {
             get
             {
@@ -65,7 +67,8 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    CurrentViewModel = new OrderViewModel(this);
+                    CurrentViewModel = _viewModels[0];
+
                 });
             }
         }
@@ -76,7 +79,12 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    CurrentViewModel = new MenuViewModel();
+                    if(CurrentViewModel is OrderViewModel)
+                    {
+                        _viewModels[0] = CurrentViewModel;
+                    }
+                    CurrentViewModel = _viewModels[1];
+
                 });
             }
         }
@@ -87,7 +95,11 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    CurrentViewModel = new ReportViewModel();
+                    if (CurrentViewModel is OrderViewModel)
+                    {
+                        _viewModels[0] = CurrentViewModel;
+                    }
+                    CurrentViewModel = _viewModels[2];
                 });
             }
         }

@@ -68,7 +68,7 @@ namespace RestaurantManagementClientApp.ViewModel
                     }
 
                     _menuViewModel.MenuRepository.UpdateMenuItemPrice(_menuViewModel.SelectedMenuItem, price);
-                    _menuViewModel.MenuItemsList = _menuViewModel.Convert(_menuViewModel.MenuRepository.GetAllRecords("sp_GetAllMenuItems"));
+                    _menuViewModel.MenuItemsList = _menuViewModel.MenuRepository.GetAllMenuItems();
                     System.Windows.MessageBox.Show($"You have just updated {ItemName} price from {OldPrice} to {NewPrice}.", "Result", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                     NewPrice = string.Empty;
                 });

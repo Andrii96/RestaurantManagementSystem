@@ -12,8 +12,21 @@ namespace DataAccessLayer.DataBaseAccess
     {
         public OrderDetailRepository(string connectionString) : base(connectionString) { }
 
+        public List<OrderDetail> GetAllDetailedOrderItems()
+        {
+            Connection.Open();
+            List<OrderDetail> itemsList = new List<OrderDetail>();
+            foreach (var item in GetAllRecords("sp_GetAllOrderDetail"))
+            {
+                itemsList.Add((OrderDetail)item);
+            }
+            Connection.Close();
+            return itemsList;
+        }
+
         public void InsertOrderDetailItem(OrderDetail item)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@id"] = item.Id;
             parametrs["@item_id"] = item.MenuItem.Id;
@@ -21,49 +34,49 @@ namespace DataAccessLayer.DataBaseAccess
             parametrs["@order_id"] = item.Order.Id;
 
             Execute("sp_InsertOrderDetailItem", parametrs);
+            Connection.Close();
         }
 
         public void UpdateOrderDetail(OrderDetail item, int newAmount)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@order_id"] = item.Order.Id;
             parametrs["@item_id"] = item.MenuItem.Id;
             parametrs["@amount"] = newAmount;
 
             Execute("sp_UpdateOrderInfo", parametrs);
+            Connection.Close();
         }
 
         public List<OrderDetail> GetOrderDetail (Order order)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@order_id"] = order.Id;
-
-            return Convert(GetAllRecords("sp_GetOrderDetail", parametrs));
+            var list = Convert(GetAllRecords("sp_GetOrderDetail", parametrs));
+            Connection.Close();
+            return list;
+            
         }
 
         protected override EntityBase Map(IDataRecord record)
         {
+           
             OrderDetail orderDetail = new OrderDetail((int)record["id"]);
-
-            Dictionary<string, object> parametrs = new Dictionary<string, object>();
-            parametrs["@item_id"] = (int)record["item_id"];
 
             MenuRepository menuRepo = new MenuRepository(Connection.ConnectionString);
 
-            var menu_item = (Menu)menuRepo.GetAllRecords("sp_GetMenuItemById", parametrs).First();
-            orderDetail.MenuItem = menu_item;
-            parametrs.Clear();
-
+            var menu_item = from m in menuRepo.GetAllMenuItems() where m.Id == (int)record["item_id"] select m;
+            orderDetail.MenuItem = menu_item.First();
             orderDetail.Amount = (int)record["amount"];
-
-            parametrs["@order_id"] = record["order_id"];
+         
             OrderRepository orderRepo = new OrderRepository(Connection.ConnectionString);
-            var order = (Order)orderRepo.GetAllRecords("sp_GetOrderById", parametrs).First();
-            orderDetail.Order = order;
-
+            var order = from o in orderRepo.GetAllOrders() where o.Id == (int)record["order_id"] select o;
+            orderDetail.Order = order.First();
+            
             return orderDetail;
             
-
         }
 
         private List<OrderDetail> Convert (IEnumerable<EntityBase> items)

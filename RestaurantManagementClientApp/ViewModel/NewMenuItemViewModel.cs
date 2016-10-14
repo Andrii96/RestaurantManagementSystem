@@ -93,7 +93,7 @@ namespace RestaurantManagementClientApp.ViewModel
                         return;
                     }
 
-                    Menu item = new Menu(_menuViewModel.MenuItemsList.Count + 1);
+                    Menu item = new Menu(_menuViewModel.MenuRepository.GetAllMenuItems().Count + 1);
                     item.ItemName = ItemName;
                     item.Group = new Group(Groups.FindIndex(s => s == SelectedGroup) + 1) { GroupName = SelectedGroup };
 
@@ -104,7 +104,7 @@ namespace RestaurantManagementClientApp.ViewModel
                     }
                     item.Description = Description;
                    _menuViewModel.MenuRepository.InsertRecord(item);
-                   _menuViewModel.MenuItemsList = _menuViewModel.Convert(_menuViewModel.MenuRepository.GetAllRecords("sp_GetAllMenuItems"));
+                    _menuViewModel.MenuItemsList = _menuViewModel.MenuRepository.GetAllMenuItems();
                     System.Windows.MessageBox.Show($"The item {item.ItemName} has successfully been added.", "Result", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                     Clear();
                 });

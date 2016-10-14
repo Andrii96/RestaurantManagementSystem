@@ -25,20 +25,9 @@ namespace RestaurantManagementClientApp.Views
         public MenuView()
         {
             InitializeComponent();
-            Messenger.Default.Register< NotificationMessage<ViewModel.MenuViewModel>>(this, MessageNotification);
         }
 
-        private void MessageNotification(NotificationMessage<MenuViewModel> obj)
-        {
-            if(obj.Notification == "Insert")
-            {
-                new NewMenuItem(obj.Content).Show();
-            }else if(obj.Notification == "Update")
-            {
-                new UpdateView(obj.Content).Show();
-            }
-        }
-
+    
       
         private void comboBox_Selected(object sender, RoutedEventArgs e)
         {

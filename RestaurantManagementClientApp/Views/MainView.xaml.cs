@@ -33,6 +33,7 @@ namespace RestaurantManagementClientApp.Views
         {
             if(obj.Notification == "Close")
             {
+                Messenger.Default.Unregister<NotificationMessage>(this);
                 var result = MessageBox.Show("Do you want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if(MessageBoxResult.Yes == result)

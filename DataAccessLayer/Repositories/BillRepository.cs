@@ -13,8 +13,19 @@ namespace DataAccessLayer.DataBaseAccess
     {
         public BillRepository(string connectionString) : base(connectionString) { }
 
+        public List<Bill> GetAllBills()
+        {
+            List<Bill> billList = new List<Bill>();
+            foreach (var item in GetAllRecords(""))
+            {
+                billList.Add((Bill)item);
+            }
+            return billList;
+        }
+
         public void InsertBillRecord(Bill bill)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@id"] = bill.Id;
             parametrs["@order_id"] = bill.Order.Id;
@@ -22,17 +33,24 @@ namespace DataAccessLayer.DataBaseAccess
             parametrs["@bill_date"] = bill.Date;
 
             Execute("sp_InsertBillrecord", parametrs);
+
+            Connection.Close();
+
         }
 
         public void DeleteBillRecord(Bill bill)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@bill_id"] = bill.Id;
             Execute("sp_DeleteBillRecord", parametrs);
+            Connection.Close();
         }
 
         public Bill GetBillByOrder(Order order)
         {
+            Connection.Open();
+            Bill bill = null;
             using (var command = new SqlCommand("sp_GetBillByOrder", Connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
@@ -42,21 +60,25 @@ namespace DataAccessLayer.DataBaseAccess
                 {                   
                     if (reader.Read())
                     {
-                        Bill bill = new Bill((int)reader["bill_number"]);
+                        bill = new Bill((int)reader["bill_number"]);
                         bill.Order = order;
                         bill.Total = (double)reader["total"];
                         bill.Date = (DateTime)reader["bill_date"];
-                        return bill;
+                        
                     }
 
-                    return null;
                 }
+                Connection.Close();
+                return bill;
+                
             }
 
         }
 
         protected override EntityBase Map(IDataRecord record)
         {
+            
+
             Bill bill = new Bill((int)record["bill_number"]);
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@order_id"] = (int)record["order_id"];
@@ -65,8 +87,9 @@ namespace DataAccessLayer.DataBaseAccess
 
             bill.Total = (double)record["total"];
             bill.Date = (DateTime)record["bill_date"];
-
+            
             return bill;
+
             
         }
 

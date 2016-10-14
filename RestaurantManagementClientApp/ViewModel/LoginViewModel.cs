@@ -60,11 +60,11 @@ namespace RestaurantManagementClientApp.ViewModel
                         var casher = _casherRepository.GetCasherByEmailAndPassword(Login, _password);
                         Messenger.Default.Send<DataAccessLayer.Models.Casher>(casher);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         MessageBox.Show("Wrong login or password. Please, try again");
                     }
-                                        
+
                 });
             }
         }

@@ -236,7 +236,7 @@ namespace RestaurantManagementClientApp.ViewModel
                        
                         if(_tableRepository.GetTableByNumber(TableNumber).TableInfo == "Free")
                         {
-                            OrderNumber = _orderRepository.GetAllRecords("sp_GetAllOrders").Count + 1;
+                            OrderNumber = _orderRepository.GetAllOrders().Count + 1;
                             CurrentOrder = new DataAccessLayer.Models.Order(OrderNumber);
                             CurrentOrder.Date = DateTime.Now;
                             CurrentOrder.TableNumber = TableNumber;
@@ -271,7 +271,7 @@ namespace RestaurantManagementClientApp.ViewModel
 
         public void SubmitOrderDetail()
         {
-            int id = _orderDetailRepository.GetAllRecords("sp_GetAllOrderDetail").Count + 1;
+            int id = _orderDetailRepository.GetAllDetailedOrderItems().Count + 1;
 
             OrderDetail orderDetail = new OrderDetail(id);
             orderDetail.Amount = Amount;

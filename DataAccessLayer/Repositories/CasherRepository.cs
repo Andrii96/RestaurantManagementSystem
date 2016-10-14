@@ -12,32 +12,49 @@ namespace DataAccessLayer.DataBaseAccess
     {
         public CasherRepository (string connectionString): base(connectionString) { }
 
+        public List<Casher> GetAllBills()
+        {
+            List<Casher> casherList = new List<Casher>();
+            foreach (var item in GetAllRecords(""))
+            {
+                casherList.Add((Casher)item);
+            }
+            return casherList;
+        }
+
         public void DeleteCasher(Casher casher)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@casher_id"] = casher.Id;
 
             Execute("sp_DeleteCasherRecord", parametrs);
+            Connection.Close();
         }
 
         public Casher GetCasherById(int id)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
 
             parametrs["@casher_id"] = id;
-
-            return (Casher)GetAllRecords("sp_GetCasherById", parametrs).First();
+            var casher = (Casher)GetAllRecords("sp_GetCasherById", parametrs).First();
+            Connection.Close();
+            return casher;
             
+
         }
 
         public Casher GetCasherByEmailAndPassword(string email, string pass)
         {
+            Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
 
             parametrs["@login"] = email;
             parametrs["@pass"] = pass;
-
-            return (Casher)GetAllRecords("sp_GetCasherByLoginAndPass", parametrs).First();
+            var casher = (Casher)GetAllRecords("sp_GetCasherByLoginAndPass", parametrs).First();
+            Connection.Close();
+            return casher;
 
         }
 
@@ -47,7 +64,6 @@ namespace DataAccessLayer.DataBaseAccess
 
             casher.Name = record["casher_name"] as string;
             casher.Surname = record["casher_surname"] as string;
-
             return casher;
         }
     }

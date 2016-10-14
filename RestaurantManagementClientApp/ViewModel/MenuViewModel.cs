@@ -26,7 +26,7 @@ namespace RestaurantManagementClientApp.ViewModel
         {
             _menuRepository = new MenuRepository(_connectionString);
             _groupRepository = new GroupRepository(_connectionString);
-            MenuItemsList = Convert(_menuRepository.GetAllRecords("sp_GetAllMenuItems"));
+            MenuItemsList = _menuRepository.GetAllMenuItems();
             GroupsItemsNames = GetGroupItemsNames();
             GroupsItemsNames.Add("All");
             SelectedGroup = GroupsItemsNames.Last();
@@ -99,7 +99,7 @@ namespace RestaurantManagementClientApp.ViewModel
                         if (result == System.Windows.MessageBoxResult.OK)
                         {
                             _menuRepository.DeleteMenuItem(SelectedMenuItem);
-                            MenuItemsList = Convert(_menuRepository.GetAllRecords("sp_GetAllMenuItems"));
+                            MenuItemsList = _menuRepository.GetAllMenuItems();
                             SelectedGroup = GroupsItemsNames.Last();
                             SelectedMenuItem = null;
                         }
@@ -117,9 +117,9 @@ namespace RestaurantManagementClientApp.ViewModel
                       if(SelectedGroup != "All")
                       {
                           MenuItemsList = _menuRepository.GetMenuItemsByGroup(SelectedGroup);
-                      }else
+                      }else if(SelectedGroup == "All")
                       {
-                          MenuItemsList = Convert(_menuRepository.GetAllRecords("sp_GetAllMenuItems"));
+                          MenuItemsList = _menuRepository.GetAllMenuItems();
                       }
                      
                   });
@@ -132,8 +132,7 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    Messenger.Default.Send<NotificationMessage<MenuViewModel>>(new NotificationMessage<MenuViewModel>(this, "Insert"));
-
+                    new Views.NewMenuItem(this).Show();
                 });
             }
         }
@@ -153,7 +152,7 @@ namespace RestaurantManagementClientApp.ViewModel
                         var result = System.Windows.MessageBox.Show($"Do you want to update {SelectedMenuItem.ItemName} price?", "Update", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Question);
                         if (result == System.Windows.MessageBoxResult.OK)
                         {
-                            Messenger.Default.Send<NotificationMessage<MenuViewModel>>(new NotificationMessage<MenuViewModel>(this, "Update"));
+                            new Views.UpdateView(this).Show();
                         }
                     }
                     
@@ -162,20 +161,11 @@ namespace RestaurantManagementClientApp.ViewModel
             }
         }
 
-        public List<Menu> Convert(IList<DataAccessLayer.EntityBase> list)
-        {
-            List<Menu> menuItems = new List<Menu>();
 
-            foreach (var item in list)
-            {
-                menuItems.Add((Menu)item);
-            }
-            return menuItems;
-        }
 
         public List<string> GetGroupItemsNames()
         {
-            var groups = _groupRepository.GetAllRecords("sp_GetAllGroups");
+            var groups = _groupRepository.GetAllGroups();
             List<string> groupNamesList = new List<string>();
 
             foreach (var item in groups)
@@ -187,5 +177,7 @@ namespace RestaurantManagementClientApp.ViewModel
             return groupNamesList;
 
         }
+
+        
     }
 }

@@ -38,8 +38,13 @@ namespace DataAccessLayer.DataBaseAccess
         {
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@date"] = date;
-
-            return (List<Order>)GetAllRecords("sp_GetOrdersByDate", parametrs);
+            var list = GetAllRecords("sp_GetOrdersByDate", parametrs);
+            List<Order> orders = new List<Order>();
+            foreach (var item in list)
+            {
+                orders.Add((Order)item);
+            }
+            return orders;
         }
 
         public List<Order> GetOrdersByTableNumber(int number)
@@ -56,7 +61,7 @@ namespace DataAccessLayer.DataBaseAccess
             return orders;
         }
 
-        public List<Order> GetOrdersByMonth(int monthNumber)
+        public List<Order> GetOrdersByMonth(int monthNumber,int year)
         {
             if(monthNumber < 1 || monthNumber > 12)
             {
@@ -65,8 +70,15 @@ namespace DataAccessLayer.DataBaseAccess
 
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@month"] = monthNumber;
+            parametrs["@year"] = year;
 
-            return (List<Order>)GetAllRecords("sp_GetOrdersByMonth", parametrs);
+            var list = GetAllRecords("sp_GetOrdersByMonth", parametrs); 
+            List<Order> orders = new List<Order>();
+            foreach (var item in list)
+            {
+                orders.Add((Order)item);
+            }
+            return orders;
         }
 
         protected override EntityBase Map(IDataRecord record)

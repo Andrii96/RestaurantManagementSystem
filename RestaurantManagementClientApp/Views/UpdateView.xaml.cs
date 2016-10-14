@@ -1,5 +1,4 @@
-﻿using RestaurantManagementClientApp.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +15,14 @@ using System.Windows.Shapes;
 namespace RestaurantManagementClientApp.Views
 {
     /// <summary>
-    /// Interaction logic for NewMenuItem.xaml
+    /// Interaction logic for UpdateView.xaml
     /// </summary>
-    public partial class NewMenuItem : Window
+    public partial class UpdateView : Window
     {
-        public NewMenuItem(MenuViewModel menuViewModel)
+        public UpdateView(ViewModel.MenuViewModel viewModel)
         {
             InitializeComponent();
-            DataContext = new NewMenuItemViewModel(menuViewModel);
+            DataContext = new ViewModel.UpdateViewModel(viewModel);
         }
     }
 }

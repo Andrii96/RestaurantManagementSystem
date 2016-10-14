@@ -11,6 +11,18 @@
                 <GradientStop Color="Black" Offset="1" />
             </LinearGradientBrush>
         
+            <LinearGradientBrush x:Key="GreenGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF437608" Offset="0"/>
+                <GradientStop Color="#FF619B1F" Offset="1"/>
+                <GradientStop Color="#FFCCECA7" Offset="0.562"/>
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="RedGradiendBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFEC2424" Offset="0"/>
+                <GradientStop Color="#FFEE6262" Offset="1"/>
+                <GradientStop Color="#FFF9B5B5" Offset="0.539"/>
+            </LinearGradientBrush>
+
             <Style TargetType="Button" x:Key="btnLogIn">
                 <Setter Property="Width" Value="80"/>
                 <Setter Property="Margin" Value="10" />
@@ -112,7 +124,55 @@
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
+                </Setter>
+            </Style>
 
+            <Style TargetType="Button" x:Key="OKButton">
+                <Setter Property="Width" Value="75"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border BorderBrush="Black" BorderThickness="3" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                                   >
+                                <Grid x:Name="OkGrid" Background="{StaticResource GreenGradientBrush}" HorizontalAlignment="Center"   Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" >
+                                    <ContentPresenter  x:Name="myContentPresenter3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,8,11,12" 
+                                                        Content="{TemplateBinding  Content}"/>
+                                </Grid>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" TargetName="OkGrid" Value="#FF2D5F0A"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Style>
+
+            <Style TargetType="Button" x:Key="CancelButton">
+                <Setter Property="Width" Value="75"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border BorderBrush="Black" BorderThickness="3" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                                   >
+                                <Grid x:Name="OkGrid" Background="{StaticResource RedGradiendBrush}" HorizontalAlignment="Center"   Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" >
+                                    <ContentPresenter  x:Name="myContentPresenter3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,8,11,12" 
+                                                        Content="{TemplateBinding  Content}"/>
+                                </Grid>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" TargetName="OkGrid" Value="#FFF03232"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
                 </Setter>
 
             </Style>

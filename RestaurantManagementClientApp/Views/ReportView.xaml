@@ -2,11 +2,41 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RestaurantManagementClientApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="468" d:DesignWidth="889">
     <Grid>
-            
+        <DataGrid x:Name="dataGrid"  SelectedItem="{Binding SelectedBill}" AutoGenerateColumns="False" ItemsSource="{Binding BillList}" HorizontalAlignment="Left" Margin="30,57,0,0" VerticalAlignment="Top" Height="341" Width="642">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Order Number" Binding="{Binding Order.Id}"/>
+                <DataGridTextColumn Header="Waiter Name" Binding="{Binding Order.Waiter.Name }"/>
+                <DataGridTextColumn Header="Waiter Surname" Binding="{Binding Order.Waiter.Surname }"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Order.Date }"/>
+                <DataGridTextColumn Header="Total" Binding="{Binding Total }"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding OrderDetailInfo}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+        <Calendar HorizontalAlignment="Left"  SelectedDate="{Binding SelectedDate}" Margin="667,57,0,0" VerticalAlignment="Top" Width="212" Height="165">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectedDatesChanged">
+                    <i:InvokeCommandAction Command="{Binding ReportForDay}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Calendar>
+        <Label x:Name="label" Content="Report for:" HorizontalAlignment="Left" Margin="202,22,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold" FontSize="20"/>
+        <Label x:Name="label_Copy" Content="Total:" HorizontalAlignment="Left" Margin="488,395,0,0" VerticalAlignment="Top" Width="84" FontWeight="Bold" FontSize="22"/>
+        <Label x:Name="label_Copy1" Content="{Binding Total}" HorizontalAlignment="Left" Margin="572,398,0,0" VerticalAlignment="Top" Width="95" FontWeight="Bold" FontSize="18" Height="36"/>
+        <Label x:Name="label_Copy2" Content="{Binding ReportInfo}" HorizontalAlignment="Left" Margin="337,20,0,0" VerticalAlignment="Top" Width="209" FontSize="22"/>
+        <Button x:Name="button" Content="For mounth" Command="{Binding ReportForMonth}" Style="{StaticResource toolBarButton}" HorizontalAlignment="Left" Margin="762,227,0,0" VerticalAlignment="Top" Width="102" Height="42" FontWeight="Bold"/>
+        <Button x:Name="button1" ToolTip="Open in Excel" Command="{Binding OpenInExcel}"  Style="{StaticResource CloseButton}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="692,330,0,0" VerticalAlignment="Top" Height="68" Width="76" >
+            <Image x:Name="Excel"  HorizontalAlignment="Center" Source="/RestaurantManagementClientApp;component/Resources/excel.png" Margin="-6,0,0,0" Width="50" RenderTransformOrigin="0.848,0.533"/>
+
+        </Button>
     </Grid>
 </UserControl>

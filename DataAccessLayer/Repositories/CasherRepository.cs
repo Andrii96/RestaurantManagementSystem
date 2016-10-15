@@ -10,36 +10,36 @@ namespace DataAccessLayer.DataBaseAccess
 {
     public class CasherRepository : RepositoryBase
     {
-        public CasherRepository (string connectionString): base(connectionString) { }
+        #region Constructor
 
-        public List<Casher> GetAllBills()
-        {
-            List<Casher> casherList = new List<Casher>();
-            foreach (var item in GetAllRecords(""))
-            {
-                casherList.Add((Casher)item);
-            }
-            return casherList;
-        }
+        public CasherRepository (string connectionString): base(connectionString) { }
+        
+        #endregion
+
+        #region Methods
 
         public void DeleteCasher(Casher casher)
         {
             Connection.Open();
+
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@casher_id"] = casher.Id;
 
             Execute("sp_DeleteCasherRecord", parametrs);
+
             Connection.Close();
         }
 
         public Casher GetCasherById(int id)
         {
             Connection.Open();
-            Dictionary<string, object> parametrs = new Dictionary<string, object>();
 
+            Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@casher_id"] = id;
             var casher = (Casher)GetAllRecords("sp_GetCasherById", parametrs).First();
+
             Connection.Close();
+
             return casher;
             
 
@@ -53,6 +53,7 @@ namespace DataAccessLayer.DataBaseAccess
             parametrs["@login"] = email;
             parametrs["@pass"] = pass;
             var casher = (Casher)GetAllRecords("sp_GetCasherByLoginAndPass", parametrs).First();
+
             Connection.Close();
             return casher;
 
@@ -66,5 +67,7 @@ namespace DataAccessLayer.DataBaseAccess
             casher.Surname = record["casher_surname"] as string;
             return casher;
         }
+
+        #endregion
     }
 }

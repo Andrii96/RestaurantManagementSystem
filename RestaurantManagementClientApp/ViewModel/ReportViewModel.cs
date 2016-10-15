@@ -11,27 +11,33 @@ using System.Windows.Input;
 using Microsoft.Office.Interop.Excel;
 using GalaSoft.MvvmLight.Messaging;
 using System.Windows.Controls;
+using System.Configuration;
 
 namespace RestaurantManagementClientApp.ViewModel
 {
     public class ReportViewModel:ViewModelBase
     {
+        #region Fields
         private string _reportInfo;
         private double _total;
         private BillRepository _billRepository;
         private OrderRepository _orderRepository;
-        private string _connectionString = "Server=ANDRIIPC;Database=Restaurant;Trusted_Connection=True; ";
+        private string _connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
         private Bill _selectedBill;
         private List<Bill> _billList;
         private DateTime _selectedDate;
+        #endregion
 
+        #region Constructor
         public ReportViewModel()
         {
             _billRepository = new BillRepository(_connectionString);
             _orderRepository = new OrderRepository(_connectionString);
             SelectedDate = DateTime.Now;
         }
+        #endregion
 
+        #region Properties
         public string ReportInfo
         {
             get { return _reportInfo; }
@@ -150,8 +156,10 @@ namespace RestaurantManagementClientApp.ViewModel
                 });
             }
         }
+        #endregion
 
-        private  void ExportToExcel()
+        #region Methods
+        private void ExportToExcel()
         {
 
             Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
@@ -207,5 +215,6 @@ namespace RestaurantManagementClientApp.ViewModel
             Total = total;
             return bills;
         }
+        #endregion
     }
 }

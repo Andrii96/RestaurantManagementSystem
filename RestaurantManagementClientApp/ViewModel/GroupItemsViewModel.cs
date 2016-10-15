@@ -12,9 +12,12 @@ namespace RestaurantManagementClientApp.ViewModel
 {
     public class GroupItemsViewModel:ViewModelBase
     {
+        #region Fields
         private OrderViewModel _orderViewModel;
         private string _selectedGroupName;
+        #endregion
 
+        #region Properties
         public GroupItemsViewModel(OrderViewModel orderViewModel)
         {
             _orderViewModel = orderViewModel;
@@ -46,5 +49,6 @@ namespace RestaurantManagementClientApp.ViewModel
                 });
             }
         }
+        #endregion
     }
 }

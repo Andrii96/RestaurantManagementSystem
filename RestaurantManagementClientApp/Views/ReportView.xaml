@@ -9,6 +9,26 @@
              d:DesignHeight="468" d:DesignWidth="889">
     <Grid>
         <DataGrid x:Name="dataGrid"  SelectedItem="{Binding SelectedBill}" AutoGenerateColumns="False" ItemsSource="{Binding BillList}" HorizontalAlignment="Left" Margin="30,57,0,0" VerticalAlignment="Top" Height="341" Width="698">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF6E5536"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Arial Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Verdana"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.CellStyle>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Order Number" Binding="{Binding Order.Id}"/>
                 <DataGridTextColumn Header="Waiter Name" Binding="{Binding Order.Waiter.Name }"/>

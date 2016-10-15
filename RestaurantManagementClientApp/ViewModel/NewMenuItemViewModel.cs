@@ -13,19 +13,23 @@ namespace RestaurantManagementClientApp.ViewModel
 {
     public class NewMenuItemViewModel:ViewModelBase
     {
+        #region Fields
         private string _itemName;
         private string _selectedGroup;
         private string _price;
         private string _description;
         private List<string> _groups;
         private MenuViewModel _menuViewModel;
+        #endregion
 
+        #region Constructor
         public NewMenuItemViewModel(MenuViewModel menuViewModel)
         {
             _menuViewModel = menuViewModel;
             Groups = _menuViewModel.GetGroupItemsNames();
             
         }
+        #endregion
 
         #region Properties
         public string ItemName

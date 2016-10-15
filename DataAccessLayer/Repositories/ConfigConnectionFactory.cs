@@ -26,10 +26,12 @@ namespace DataAccessLayer
         public IDbConnection Create()
         {
             var connection = new SqlConnection(_connectionString);
+
             if(connection == null)
             {
                 throw new NullReferenceException("Connection is null value.");
             }
+
             return connection;
         }
             

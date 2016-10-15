@@ -9,6 +9,25 @@
              d:DesignHeight="468" d:DesignWidth="889">
     <Grid>
         <DataGrid x:Name="dataGrid" SelectedItem="{Binding SelectedMenuItem}"  AutoGenerateColumns="False" ItemsSource="{Binding MenuItemsList}" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Height="371" Width="867">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF6E5536"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Arial Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Verdana"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Number" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding ItemName}"/>

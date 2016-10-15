@@ -16,6 +16,25 @@
         <Label x:Name="label" Content="Order №" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="94" FontSize="20"/>
         <Label x:Name="label_Copy" Content="{Binding OrderNumber}" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Width="37" FontSize="20"/>
         <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding OrderList}" HorizontalAlignment="Left" Margin="69,47,0,0" VerticalAlignment="Top" Height="206" Width="358">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF6E5536"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Arial Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Verdana"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Width="120" Header="Name" Binding="{Binding MenuItem.ItemName}"/>
                 <DataGridTextColumn Width="119" Header="Price" Binding="{Binding MenuItem.Price}"/>

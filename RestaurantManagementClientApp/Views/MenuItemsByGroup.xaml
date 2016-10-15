@@ -14,6 +14,26 @@
             </LinearGradientBrush>
         </Grid.Background>
         <DataGrid x:Name="dataGrid" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" ItemsSource="{Binding ItemsByGroup}" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="299" Width="330">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF6E5536"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Arial Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Verdana"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.CellStyle>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"  Width="150" Binding="{Binding ItemName}"/>
                 <DataGridTextColumn Header="Price" Width="110" Binding="{Binding Price}"/>

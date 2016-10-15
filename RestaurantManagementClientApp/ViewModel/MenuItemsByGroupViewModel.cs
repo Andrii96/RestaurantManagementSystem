@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.Messaging;
 using RestaurantManagementClientApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,15 +16,18 @@ namespace RestaurantManagementClientApp.ViewModel
 {
     public class MenuItemsByGroupViewModel:ViewModelBase
     {
+        #region Fields
         private GroupItemsViewModel _groupItemsViewModel;
         private List<Menu> _itemsByGroup;
         private string _groupName;
         private Menu _selectedItem;
         private string _amount;
-        private string _connectionString = "Server=ANDRIIPC;Database=Restaurant;Trusted_Connection=True;";
+        private string _connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
         private MenuRepository _menuRepository;
         private OrderDetailRepository _orderDetailRepository;
+        #endregion
 
+        #region Constructor
         public MenuItemsByGroupViewModel(GroupItemsViewModel groupItemsViewModel)
         {
             _groupItemsViewModel = groupItemsViewModel;
@@ -31,10 +35,11 @@ namespace RestaurantManagementClientApp.ViewModel
             _orderDetailRepository = new OrderDetailRepository(_connectionString);
             GroupName = _groupItemsViewModel.SelectedGroupName;
             ItemsByGroup = _menuRepository.GetMenuItemsByGroup(GroupName);
-            Amount = "1";
-            
+            Amount = "1";            
         }
+        #endregion
 
+        #region Methods
         public List<Menu> ItemsByGroup
         {
             get { return _itemsByGroup; }
@@ -107,5 +112,6 @@ namespace RestaurantManagementClientApp.ViewModel
                 });
             }
         }
+        #endregion
     }
 }

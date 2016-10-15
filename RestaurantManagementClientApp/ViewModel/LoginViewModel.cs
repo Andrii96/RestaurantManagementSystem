@@ -12,16 +12,18 @@ using System.Windows;
 using GalaSoft.MvvmLight.Messaging;
 using System.Windows.Navigation;
 using GalaSoft.MvvmLight.Ioc;
+using System.Configuration;
 
 namespace RestaurantManagementClientApp.ViewModel
 {
     public class LoginViewModel:ViewModelBase
     {
         #region Fields
+
         private string _login;
         private string _password;
         private CasherRepository _casherRepository;
-        private string _connectionString = "Server=ANDRIIPC;Database=Restaurant;Trusted_Connection=True;";
+        private string _connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
 
         #endregion
 

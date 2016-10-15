@@ -37,6 +37,7 @@ namespace RestaurantManagementClientApp.ViewModel
         {
             get { return _casher; }
         }
+
         public  ViewModelBase CurrentViewModel
         {
             get
@@ -79,10 +80,6 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    if(CurrentViewModel is OrderViewModel)
-                    {
-                        _viewModels[0] = CurrentViewModel;
-                    }
                     CurrentViewModel = _viewModels[1];
 
                 });
@@ -95,10 +92,6 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    if (CurrentViewModel is OrderViewModel)
-                    {
-                        _viewModels[0] = CurrentViewModel;
-                    }
                     CurrentViewModel = _viewModels[2];
                 });
             }
@@ -114,9 +107,6 @@ namespace RestaurantManagementClientApp.ViewModel
                 });
             }
         }
-        #endregion
-
-        #region Methods
         #endregion
 
     }

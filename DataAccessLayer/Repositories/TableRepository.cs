@@ -10,18 +10,11 @@ namespace DataAccessLayer.DataBaseAccess
 {
     public class TableRepository : RepositoryBase
     {
+        #region Constructor
         public TableRepository(string connectionString) : base(connectionString) { }
+        #endregion
 
-        public List<Table> GetAllTables()
-        {
-            List<Table> itemsList = new List<Table>();
-            foreach (var item in GetAllRecords(""))
-            {
-                itemsList.Add((Table)item);
-            }
-            return itemsList;
-        }
-
+        #region Methods
         public List<Table> GetTableByStatus(string status)
         {
             Connection.Open();
@@ -62,5 +55,6 @@ namespace DataAccessLayer.DataBaseAccess
             
             return table;
         }
+        #endregion
     }
 }

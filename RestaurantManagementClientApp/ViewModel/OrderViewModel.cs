@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 //using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace RestaurantManagementClientApp.ViewModel
             private bool _isDiscount;
             private double _cash;
             private double _rest;
-            private string _connectionString = "Server=ANDRIIPC;Database=Restaurant;Trusted_Connection=True; ";
+            private string _connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
         private Button _currentTable;
         #endregion
 
@@ -160,12 +161,13 @@ namespace RestaurantManagementClientApp.ViewModel
             }
         }
 
-        public string Cash
+        public double Cash
         {
-            get { return _cash.ToString(); }
+            get { return _cash; }
             set
             {
-                _cash = double.Parse(value);
+                //double.TryParse(value,out _cash);
+                _cash = value;
                 RaisePropertyChanged("Cash");
             }
         }
@@ -186,8 +188,17 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    Rest = double.Parse(Cash) - Total;
+                    if(OrderNumber == 0)
+                    {
+                        MessageBox.Show("Please, select table.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }else if(Cash == 0 || Cash < Total)
+                    {
+                        MessageBox.Show("Wrong cash number.");
+                        return;
+                    }
 
+                    Rest = Cash - Total;
                     Bill bill = new Bill(OrderNumber);
                     bill.Date = DateTime.Now;
                     bill.Order = CurrentOrder;
@@ -198,7 +209,7 @@ namespace RestaurantManagementClientApp.ViewModel
                    
                     _tableRepository.UpdateTableStatus(TableNumber, "Free");
                      Total = 0;
-                     Cash = "0";
+                     Cash = 0;
                     OrderNumber = 0;
                     CurrentOrderDetail = null;
                     _currentTable.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF5FB424");
@@ -221,6 +232,7 @@ namespace RestaurantManagementClientApp.ViewModel
                     {
                         Total = _previousTotal;
                     }
+                    _previousTotal = 0;
                 });
             }
         }
@@ -269,8 +281,14 @@ namespace RestaurantManagementClientApp.ViewModel
             }
         #endregion
 
+        #region Methods
         public void SubmitOrderDetail()
         {
+            if(OrderNumber == 0)
+            {
+                MessageBox.Show("Please, select table.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             int id = _orderDetailRepository.GetAllDetailedOrderItems().Count + 1;
 
             OrderDetail orderDetail = new OrderDetail(id);
@@ -296,6 +314,7 @@ namespace RestaurantManagementClientApp.ViewModel
 
             return sum;
         }
+        #endregion
 
     }
 }

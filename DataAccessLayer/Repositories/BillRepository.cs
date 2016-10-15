@@ -11,21 +11,16 @@ namespace DataAccessLayer.DataBaseAccess
 {
     public class BillRepository : RepositoryBase
     {
-        public BillRepository(string connectionString) : base(connectionString) { }
+        #region Constructor
+           public BillRepository(string connectionString) : base(connectionString) { }
+        #endregion
 
-        public List<Bill> GetAllBills()
-        {
-            List<Bill> billList = new List<Bill>();
-            foreach (var item in GetAllRecords(""))
-            {
-                billList.Add((Bill)item);
-            }
-            return billList;
-        }
+        #region Methods
 
         public void InsertBillRecord(Bill bill)
         {
             Connection.Open();
+
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@id"] = bill.Id;
             parametrs["@order_id"] = bill.Order.Id;
@@ -50,6 +45,7 @@ namespace DataAccessLayer.DataBaseAccess
         public Bill GetBillByOrder(Order order)
         {
             Connection.Open();
+
             Bill bill = null;
             using (var command = new SqlCommand("sp_GetBillByOrder", Connection))
             {
@@ -68,7 +64,9 @@ namespace DataAccessLayer.DataBaseAccess
                     }
 
                 }
+
                 Connection.Close();
+
                 return bill;
                 
             }
@@ -77,11 +75,11 @@ namespace DataAccessLayer.DataBaseAccess
 
         protected override EntityBase Map(IDataRecord record)
         {
-            
-
             Bill bill = new Bill((int)record["bill_number"]);
+
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@order_id"] = (int)record["order_id"];
+
             var order = (Order)GetAllRecords("sp_GetOrderById", parametrs).First();
             bill.Order = order;
 
@@ -92,6 +90,8 @@ namespace DataAccessLayer.DataBaseAccess
 
             
         }
+
+        #endregion
 
     }
 }

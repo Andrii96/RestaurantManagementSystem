@@ -51,7 +51,6 @@
     <Compile Include="Repositories\OrderDetailRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\TableRepository.cs" />
-    <Compile Include="Repositories\WaiterRepository.cs" />
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
@@ -62,7 +61,6 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Table.cs" />
-    <Compile Include="Entities\Waiter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

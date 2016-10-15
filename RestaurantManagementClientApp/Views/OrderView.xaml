@@ -23,6 +23,25 @@
             <ContentControl x:Name="Content" Content="{Binding CurrentViewModel, Mode=TwoWay}" Width="350" Margin="0,0,0,0"/>
         </Grid>
         <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding CurrentOrderDetail}" HorizontalAlignment="Left" Margin="174,55,0,0" VerticalAlignment="Top" Height="267" Width="360">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF6E5536"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Arial Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Verdana"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Width="120" Header="Name" Binding="{Binding MenuItem.ItemName}"/>
                 <DataGridTextColumn Width="119" Header="Price" Binding="{Binding MenuItem.Price}"/>

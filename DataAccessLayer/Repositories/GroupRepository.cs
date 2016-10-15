@@ -10,23 +10,31 @@ namespace DataAccessLayer.DataBaseAccess
 {
     public class GroupRepository : RepositoryBase
     {
+        #region Constructor
         public GroupRepository(string connectionString) : base(connectionString) { }
+        #endregion
 
+        #region Methods
         public List<Group> GetAllGroups()
         {
             Connection.Open();
+
             List<Group> groupList = new List<Group>();
+
             foreach (var item in GetAllRecords("sp_GetAllGroups"))
             {
                 groupList.Add((Group)item);
             }
+
             Connection.Close();
+
             return groupList;
         }
 
         public void InsertRecord(Group group)
         {
             Connection.Open();
+
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@id"] = group.Id;
             parametrs["@group_name"] = group.GroupName;
@@ -39,6 +47,7 @@ namespace DataAccessLayer.DataBaseAccess
         public void DeleteRecord(Group group)
         {
             Connection.Open();
+
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
             parametrs["@group_id"] = group.Id;
 
@@ -48,12 +57,12 @@ namespace DataAccessLayer.DataBaseAccess
         }
 
         protected override EntityBase Map(IDataRecord record)
-        {
-            
+        {           
             Group group = new Group((int)record["group_id"]);
             group.GroupName = record["group_name"].ToString();
             
             return group;
         }
+        #endregion
     }
 }

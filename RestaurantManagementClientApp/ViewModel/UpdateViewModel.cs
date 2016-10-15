@@ -11,18 +11,23 @@ namespace RestaurantManagementClientApp.ViewModel
 {
     public class UpdateViewModel:ViewModelBase
     {
+        #region Fields
         private MenuViewModel _menuViewModel;
         private string _itemName;
         private string _itemOldPrice;
         private string _itemNewPrice;
+        #endregion
 
+        #region Constructor
         public UpdateViewModel(MenuViewModel menuViewModel)
         {
             _menuViewModel = menuViewModel;
             ItemName = _menuViewModel.SelectedMenuItem.ItemName;
             _itemOldPrice = _menuViewModel.SelectedMenuItem.Price.ToString();
         }
+        #endregion
 
+        #region Properties
         public string ItemName
         {
             get { return _itemName; }
@@ -74,5 +79,6 @@ namespace RestaurantManagementClientApp.ViewModel
                 });
             }
         }
+        #endregion
     }
 }

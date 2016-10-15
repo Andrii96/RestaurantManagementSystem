@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,17 @@ namespace RestaurantManagementClientApp.ViewModel
 {
     public class MenuViewModel:ViewModelBase
     {
+        #region Fields
         private List<Menu> _menuItemsList;
         private List<string> _groupsItemsNames;
         private MenuRepository _menuRepository;
         private GroupRepository _groupRepository;
         private string _selectedGroup;
-        private string _connectionString = "Server=ANDRIIPC;Database=Restaurant;Trusted_Connection=True; ";
+        private string _connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
         private Menu _selectedItem;
+        #endregion
 
+        #region Constructor
         public MenuViewModel()
         {
             _menuRepository = new MenuRepository(_connectionString);
@@ -32,7 +36,9 @@ namespace RestaurantManagementClientApp.ViewModel
             SelectedGroup = GroupsItemsNames.Last();
 
         }
+        #endregion
 
+        #region Properties
         public GroupRepository GroupRepository
         {
             get { return _groupRepository; }
@@ -160,9 +166,9 @@ namespace RestaurantManagementClientApp.ViewModel
                 });
             }
         }
+        #endregion
 
-
-
+        #region Methods
         public List<string> GetGroupItemsNames()
         {
             var groups = _groupRepository.GetAllGroups();
@@ -175,9 +181,8 @@ namespace RestaurantManagementClientApp.ViewModel
             }
 
             return groupNamesList;
-
         }
+        #endregion
 
-        
     }
 }

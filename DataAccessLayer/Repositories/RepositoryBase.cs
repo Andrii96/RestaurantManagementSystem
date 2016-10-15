@@ -28,6 +28,7 @@ namespace DataAccessLayer
         {
               Connection = (SqlConnection)new ConfigConnectionFactory(connectionString).Create();
         }
+
         #endregion
 
         #region Methods
@@ -61,7 +62,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Execute(string sp_name, Dictionary<string, object> parametrs)
+        protected void Execute(string sp_name, Dictionary<string, object> parametrs)
         {
             using (var command = new SqlCommand(sp_name, Connection))
             {

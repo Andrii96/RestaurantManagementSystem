@@ -10,8 +10,11 @@ namespace DataAccessLayer.DataBaseAccess
 {
     public class OrderRepository : RepositoryBase
     {
+        #region Constructor
         public OrderRepository(string connectionString) : base(connectionString) { }
+        #endregion
 
+        #region Methods
         public List<Order> GetAllOrders()
         {
             Connection.Open();
@@ -102,7 +105,9 @@ namespace DataAccessLayer.DataBaseAccess
             Connection.Close();
             return orders;
         }
+        #endregion
 
+        #region Helpers
         protected override EntityBase Map(IDataRecord record)
         {
             
@@ -118,5 +123,6 @@ namespace DataAccessLayer.DataBaseAccess
            
             return order;
         }
+        #endregion
     }
 }

@@ -96,7 +96,7 @@ namespace RestaurantManagementClientApp.ViewModel
                 {
                     if (SelectedBill != null)
                     {
-                        new Views.OrderInfoView(this).Show();
+                        new Views.OrderInfoView(this).ShowDialog();
                         SelectedBill = null;
                     }
                 });

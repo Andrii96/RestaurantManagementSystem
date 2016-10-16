@@ -44,6 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IBillRepository.cs" />
+    <Compile Include="Interfaces\ICasherRepository.cs" />
+    <Compile Include="Interfaces\IGroupRepository.cs" />
+    <Compile Include="Interfaces\IMenuRepository.cs" />
+    <Compile Include="Interfaces\IOrderDetailRepository.cs" />
+    <Compile Include="Interfaces\IOrderRepository.cs" />
+    <Compile Include="Interfaces\ITableRepository.cs" />
     <Compile Include="Repositories\BillRepository.cs" />
     <Compile Include="Repositories\CasherRepository.cs" />
     <Compile Include="Repositories\ConfigConnectionFactory.cs" />
@@ -62,6 +69,9 @@
     <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

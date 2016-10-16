@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.Interfaces;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DataBaseAccess
 {
-    public class MenuRepository : RepositoryBase
+    public class MenuRepository : RepositoryBase, IMenuRepository
     {
         #region Constructor
         public MenuRepository(string connectionString) : base(connectionString) { }

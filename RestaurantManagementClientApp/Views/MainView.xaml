@@ -28,7 +28,7 @@
                 <GradientStop Color="#FF6E6C3D" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button x:Name="btnOrder" Command="{Binding OrderSelected}" Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="16,15,0,0" VerticalAlignment="Top"  >
+        <Button x:Name="btnOrder"  Command="{Binding OrderSelected}"  Style="{StaticResource toolBarButton}"  HorizontalAlignment="Left" Margin="16,15,0,0" VerticalAlignment="Top"  >
             <Grid>
                 <Image x:Name="Icon" HorizontalAlignment="Left" Source="/RestaurantManagementClientApp;component/Resources/order.png" Margin="-12,0,0,0"/>
                 <Label Margin="18,2,-6,4"  Content="Order" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI Black"/>

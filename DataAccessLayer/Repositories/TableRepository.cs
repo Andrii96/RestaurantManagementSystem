@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.Interfaces;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DataBaseAccess
 {
-    public class TableRepository : RepositoryBase
+    public class TableRepository : RepositoryBase, ITableRepository
     {
         #region Constructor
         public TableRepository(string connectionString) : base(connectionString) { }
@@ -25,11 +26,11 @@ namespace DataAccessLayer.DataBaseAccess
 
         }
 
-        public void UpdateTableStatus(int id, string status)
+        public void UpdateTableStatus(Table table, string status)
         {
             Connection.Open();
             Dictionary<string, object> parametrs = new Dictionary<string, object>();
-            parametrs["@id"] = id;
+            parametrs["@id"] = table.Id;
             parametrs["@info"] = status;
 
             Execute("sp_UpdateTableInfo", parametrs);

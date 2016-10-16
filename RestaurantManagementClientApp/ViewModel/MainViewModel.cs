@@ -5,10 +5,13 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
+//using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace RestaurantManagementClientApp.ViewModel
 {
@@ -69,7 +72,7 @@ namespace RestaurantManagementClientApp.ViewModel
                 return new RelayCommand(() =>
                 {
                     CurrentViewModel = _viewModels[0];
-
+                    
                 });
             }
         }
@@ -90,8 +93,10 @@ namespace RestaurantManagementClientApp.ViewModel
         {
             get
             {
+                
                 return new RelayCommand(() =>
                 {
+                    
                     CurrentViewModel = _viewModels[2];
                 });
             }
@@ -107,6 +112,7 @@ namespace RestaurantManagementClientApp.ViewModel
                 });
             }
         }
+        
         #endregion
 
     }

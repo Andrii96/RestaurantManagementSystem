@@ -91,6 +91,7 @@
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Setter Property="Background" TargetName="ButtonGrid" Value="#FF836539"/>
                                 </Trigger>
+                               
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>

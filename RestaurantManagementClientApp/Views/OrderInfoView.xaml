@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:RestaurantManagementClientApp.Views"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="OrderInfoView" Height="346.443" Width="503.348">
+        Icon="/RestaurantManagementClientApp;component/Resources/menu.png"
+        Title="Order info" Height="346.443" Width="503.348">
     <Grid HorizontalAlignment="Left" Width="516" Margin="0,0,-8,0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

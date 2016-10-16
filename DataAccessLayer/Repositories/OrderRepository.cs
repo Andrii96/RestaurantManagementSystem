@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.Interfaces;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DataBaseAccess
 {
-    public class OrderRepository : RepositoryBase
+    public class OrderRepository : RepositoryBase, IOrderRepository
     {
         #region Constructor
         public OrderRepository(string connectionString) : base(connectionString) { }

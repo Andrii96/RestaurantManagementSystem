@@ -207,7 +207,7 @@ namespace RestaurantManagementClientApp.ViewModel
 
                     MessageBox.Show($"The rest is {Rest}","REST");
                    
-                    _tableRepository.UpdateTableStatus(TableNumber, "Free");
+                    _tableRepository.UpdateTableStatus(_tableRepository.GetTableByNumber(TableNumber), "Free");
                      Total = 0;
                      Cash = 0;
                     OrderNumber = 0;
@@ -254,7 +254,7 @@ namespace RestaurantManagementClientApp.ViewModel
                             CurrentOrder.TableNumber = TableNumber;
                             CurrentOrder.Waiter = _mainViewModel.Casher;
                             _orderRepository.InsertOrderRecord(CurrentOrder);
-                            _tableRepository.UpdateTableStatus(TableNumber, "Busy");
+                            _tableRepository.UpdateTableStatus(_tableRepository.GetTableByNumber(TableNumber), "Busy");
                             b.Background = Brushes.Red;
                         }
                         else

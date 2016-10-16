@@ -138,7 +138,7 @@ namespace RestaurantManagementClientApp.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    new Views.NewMenuItem(this).Show();
+                    new Views.NewMenuItem(this).ShowDialog();
                 });
             }
         }
@@ -158,7 +158,7 @@ namespace RestaurantManagementClientApp.ViewModel
                         var result = System.Windows.MessageBox.Show($"Do you want to update {SelectedMenuItem.ItemName} price?", "Update", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Question);
                         if (result == System.Windows.MessageBoxResult.OK)
                         {
-                            new Views.UpdateView(this).Show();
+                            new Views.UpdateView(this).ShowDialog();
                         }
                     }
                     

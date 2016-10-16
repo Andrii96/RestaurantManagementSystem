@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.Interfaces;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DataBaseAccess
 {
-    public class CasherRepository : RepositoryBase
+    public class CasherRepository : RepositoryBase, ICasherRepository
     {
         #region Constructor
 
@@ -17,33 +18,6 @@ namespace DataAccessLayer.DataBaseAccess
         #endregion
 
         #region Methods
-
-        public void DeleteCasher(Casher casher)
-        {
-            Connection.Open();
-
-            Dictionary<string, object> parametrs = new Dictionary<string, object>();
-            parametrs["@casher_id"] = casher.Id;
-
-            Execute("sp_DeleteCasherRecord", parametrs);
-
-            Connection.Close();
-        }
-
-        public Casher GetCasherById(int id)
-        {
-            Connection.Open();
-
-            Dictionary<string, object> parametrs = new Dictionary<string, object>();
-            parametrs["@casher_id"] = id;
-            var casher = (Casher)GetAllRecords("sp_GetCasherById", parametrs).First();
-
-            Connection.Close();
-
-            return casher;
-            
-
-        }
 
         public Casher GetCasherByEmailAndPassword(string email, string pass)
         {

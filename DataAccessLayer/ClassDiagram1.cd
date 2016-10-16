@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataAccessLayer.Models.Bill">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAQAABAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Bill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.Models.Casher">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Casher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.Models.Group">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Entities\Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.Models.Menu">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAEAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.Models.Order">
+    <Position X="11.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAACABAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.Models.OrderDetail">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\OrderDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.Models.Table">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Entities\Table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.EntityBase" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\EntityBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.ConfigConnectionFactory">
+    <Position X="19" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ConfigConnectionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.RepositoryBase" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAUAABAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Repositories\RepositoryBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccessLayer.DataBaseAccess.BillRepository">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAgAAAAAAIgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\BillRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.DataBaseAccess.CasherRepository">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\CasherRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.DataBaseAccess.GroupRepository">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAQAAAAAAAAAAAAAABAACAAAAAAAA=</HashCode>
+      <FileName>Repositories\GroupRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.DataBaseAccess.MenuRepository">
+    <Position X="0.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAABAAAAAAQEAAAAAAAAACAAAFAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\MenuRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.DataBaseAccess.OrderDetailRepository">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABQAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Repositories\OrderDetailRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.DataBaseAccess.OrderRepository">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEABAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAEAg=</HashCode>
+      <FileName>Repositories\OrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.DataBaseAccess.TableRepository">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAEAAAAAAAAAAIAAAAAAEAAAA=</HashCode>
+      <FileName>Repositories\TableRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="DataAccessLayer.Interfaces.IBillRepository">
+    <Position X="17" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAIgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBillRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccessLayer.Interfaces.ICasherRepository">
+    <Position X="19.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICasherRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccessLayer.Interfaces.IGroupRepository">
+    <Position X="22.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAABAACAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IGroupRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccessLayer.Interfaces.IMenuRepository">
+    <Position X="21.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAQEAAAAAAAAACAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMenuRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccessLayer.Interfaces.IOrderDetailRepository">
+    <Position X="18.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABQAAAAAABAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Interfaces\IOrderDetailRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccessLayer.Interfaces.IOrderRepository">
+    <Position X="20.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEABAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAEAg=</HashCode>
+      <FileName>Interfaces\IOrderRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataAccessLayer.Interfaces.ITableRepository">
+    <Position X="16.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAAEAAAA=</HashCode>
+      <FileName>Interfaces\ITableRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:RestaurantManagementClientApp.Views"
         mc:Ignorable="d"
         DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
+        ResizeMode="NoResize"
         Title="Restaurant Management System" Height="300" Width="500" Icon="/RestaurantManagementClientApp;component/Resources/appIcon.png" >
     
     <Grid>

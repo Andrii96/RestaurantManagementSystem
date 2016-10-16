@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestaurantManagementClientApp.Views"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
         Icon="/RestaurantManagementClientApp;component/Resources/plus.png"
         Title="Add Item" Height="356.652" Width="341.202">

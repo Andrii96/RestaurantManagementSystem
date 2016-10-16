@@ -97,7 +97,7 @@ namespace RestaurantManagementClientApp.ViewModel
                         return;
                     }
 
-                    Menu item = new Menu(_menuViewModel.MenuRepository.GetAllMenuItems().Count + 1);
+                    Menu item = new Menu(_menuViewModel.MenuRepository.GetAllMenuItems().Last().Id + 1);
                     item.ItemName = ItemName;
                     item.Group = new Group(Groups.FindIndex(s => s == SelectedGroup) + 1) { GroupName = SelectedGroup };
 

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:RestaurantManagementClientApp.Views"
         xmlns:vm="clr-namespace:RestaurantManagementClientApp.ViewModel"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="{Binding CasherInfo}" Height="600" Width="900"
         Icon="/RestaurantManagementClientApp;component/Resources/AppIcon.png">
     <Window.Resources>

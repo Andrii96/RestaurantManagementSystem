@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestaurantManagementClientApp.Views"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Icon="/RestaurantManagementClientApp;component/Resources/update.png"
         Title="Update" Height="221" Width="300">
     <Grid>
